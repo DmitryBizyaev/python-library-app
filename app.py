@@ -1,6 +1,7 @@
 import functions
 
 
+# Меню для работы с пользователем
 def user_menu(db_name, user):
 
 	user_name = f'{user[1]} {user[2]} {user[3]}'
@@ -61,6 +62,7 @@ def user_menu(db_name, user):
 				return None
 
 
+# Меню для работы с книгой
 def book_menu(db_name, book):
 
 	if book[3] == "-":

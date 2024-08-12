@@ -269,40 +269,38 @@ def get_book_loan_history(db_name, book):
 	return data
 
 
-# Функция выполняет запрос к базе данных, на вход
-# получает имя БД и возвращает информацию о всех пользователях.
-# Возвращает информацию о пользователях в виде списка кортежей.
-def get_all_users(db_name):
-	connection = sqlite3.connect(db_name)
-	cursor = connection.cursor()
 
-	cursor.execute('''SELECT * FROM Users''')
+# def get_all_users(db_name):
+# 	connection = sqlite3.connect(db_name)
+# 	cursor = connection.cursor()
 
-	data = cursor.fetchall()
-	connection.close()
+# 	cursor.execute('''SELECT * FROM Users''')
 
-	return data
+# 	data = cursor.fetchall()
+# 	connection.close()
+
+# 	return data
 
 
-def get_all_books(db_name):
-	connection = sqlite3.connect(db_name)
-	cursor = connection.cursor()
+# def get_all_books(db_name):
+# 	connection = sqlite3.connect(db_name)
+# 	cursor = connection.cursor()
 
-	cursor.execute('''SELECT * FROM Books''')
+# 	cursor.execute('''SELECT * FROM Books''')
 
-	data = cursor.fetchall()
-	connection.close()
+# 	data = cursor.fetchall()
+# 	connection.close()
 
-	return data
+# 	return data
 
 
-def get_all_loans(db_name):
-	connection = sqlite3.connect(db_name)
-	cursor = connection.cursor()
+# def get_all_loans(db_name):
+# 	connection = sqlite3.connect(db_name)
+# 	cursor = connection.cursor()
 
-	cursor.execute('''SELECT * FROM Loans''')
+# 	cursor.execute('''SELECT * FROM Loans''')
 
-	data = cursor.fetchall()
-	connection.close()
+# 	data = cursor.fetchall()
+# 	connection.close()
 
-	return data
+# 	return data

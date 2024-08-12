@@ -79,6 +79,9 @@ def find_user_by_id(db_name):
 				user_input = str(input("Для повторной попытки нажмите Enter."))
 
 
+# Блок программы, отвечающий за поиск книги по названию
+# возвращает либо список с кортежами, которые содержат информацию
+# о подходящих книгах, либо None
 def find_book_by_title(db_name):
 
 	while True:
@@ -108,6 +111,9 @@ def find_book_by_title(db_name):
 					return data[0]
 
 
+# Блок программы, отвечающий за поиск книги по номеру идентификатору
+# возвращает либо список с кортежами, которые содержат информацию
+# о подходящей книге, либо None
 def find_book_by_id(db_name):
 
 	while True:
@@ -226,6 +232,17 @@ def delete_user(db_name, user):
 
 		# Попытка удаления пользователя
 		try:
+			no_loaned_books = db_requests.get_loaned_books(db_name, user)
+
+			if no_loaned_books != []:
+
+				print_dividing_line()
+
+				print("У пользователя есть не сданные книги.\nПользователь не был удален!\n")
+				input("Для продолжения нажмите Enter.")
+
+				return None
+
 			db_requests.delete_user(db_name, user)
 
 			print_dividing_line()
@@ -613,21 +630,21 @@ def get_book_loan_history(db_name, book):
 		return None
 
 
-# Функция выводит полный список пользователей
-def print_all_users(db_name):
+# # Функция выводит полный список пользователей
+# def print_all_users(db_name):
 
-	data = db_requests.get_all_users(db_name)
+# 	data = db_requests.get_all_users(db_name)
 
-	print_dividing_line()
+# 	print_dividing_line()
 
-	print(f' {"№":<5} | {"ФИО Пользователя":<50} | {"Номер телефона":<20}')
-	print("-" * 7 + "|" + "-" * 52 + "|" + "-" * 19)
+# 	print(f' {"№":<5} | {"ФИО Пользователя":<50} | {"Номер телефона":<20}')
+# 	print("-" * 7 + "|" + "-" * 52 + "|" + "-" * 19)
 
-	for d in data:
-		ph_num = convert_phone_number(d[4])
-		print(f' {d[0]:<5} | {(d[1] + " " + d[2] + " " + d[3]):<50} | {ph_num:<20}')
+# 	for d in data:
+# 		ph_num = convert_phone_number(d[4])
+# 		print(f' {d[0]:<5} | {(d[1] + " " + d[2] + " " + d[3]):<50} | {ph_num:<20}')
 
-	return None
+# 	return None
 
 
 # # Функция выводит полный список книг

@@ -68,7 +68,9 @@ def create_table_loans(db_name):
 	user_id INTEGER NOT NULL,
 	book_id INTEGER NOT NULL,
 	loan_start_date DATE NOT NULL,
-	loan_end_date DATE
+	loan_end_date DATE,
+	FOREIGN KEY(user_id) REFERENCES Users(user_id),
+	FOREIGN KEY(book_id) REFERENCES Books(book_id)
 	)
 	''')
 
